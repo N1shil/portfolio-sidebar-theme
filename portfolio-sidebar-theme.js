@@ -1,27 +1,70 @@
 /**
- * Copyright 2025 Nishil Patel
- * @license Apache-2.0
+ * Copyright 2025 Nishil
+ * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./portfolio-sidebar.js";
-import "./portfolio-sidebar-screen.js";
 
-export class PortfolioSidebarTheme extends LitElement {
-  static get tag() { return "portfolio-sidebar-theme"; }
+export class PortfolioSidebarTheme extends DDDSuper(I18NMixin(LitElement)) {
+  static get tag() {
+    return "portfolio-sidebar-theme";
+  }
+
   constructor() {
     super();
     this.pages = [];
   }
 
-  render() {
-    return html`
-      <portfolio-sidebar .pages=${this.pages}></portfolio-sidebar>
-      <slot @page-added=${this._addPage}></slot>
+  static get properties() {
+    return {
+      pages: { type: Array },
+    };
+  }
+
+  static get styles() {
+    return css`
+      :host {
+        display: block;
+      }
+
+      .wrapper {
+        margin-left: 270px;
+      }
     `;
   }
 
-  _addPage(e) {
-    this.pages = [...this.pages, e.detail];
+  render() {
+    console.log("📦 Pages in render():", this.pages); // ✅ See if pages are passed
+    return html`
+      <portfolio-sidebar .pages=${this.pages}></portfolio-sidebar>
+      <div class="wrapper" @page-added=${this.addPage}>
+        <slot></slot>
+      </div>
+    `;
+  }
+
+  addPage(e) {
+    const element = e.detail.value;
+    const page = {
+      number: element.pagenumber,
+      title: element.title,
+      element: element,
+    };
+    console.log("✅ Page added:", page); // ✅ Confirm each page is received
+    this.pages = [...this.pages, page];
+  }
+
+  firstUpdated() {
+    const hash = window.location.hash;
+    if (hash) {
+      const sectionId = hash.replace("#section-", "");
+      const page = this.pages.find((p) => p.number == sectionId);
+      if (page) {
+        page.element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   }
 }
 
