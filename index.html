@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Nishil Patel | Portfolio</title>
   <script type="module" src="./portfolio-sidebar-theme.js"></script>
+
   <style>
     body {
       margin: 0;
@@ -14,6 +15,8 @@
       padding: 20px;
       box-sizing: border-box;
       margin-left: 270px;
+      background-color: #ffffff;
+      color: black;
     }
     img.profile {
       width: 200px;
@@ -40,36 +43,36 @@
 </head>
 <body>
   <portfolio-sidebar-theme>
-    <portfolio-sidebar-screen title="Home" pagenumber="0" bgColor="#ffffff">
-      <div style="color: black;">
+
+    <portfolio-sidebar-screen title="Home" pagenumber="0">
+      <div>
         <h1>Nishil Patel</h1>
         <p>Welcome to my professional portfolio!</p>
         <img class="profile" src="https://media.licdn.com/dms/image/v2/D4E03AQHRTq1MpReu1g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730905316360?e=1751500800&v=beta&t=1DP7M6mKNa8njRThHt5Te1rIMJTplyr0o5EQ9qmlAI8" alt="Headshot of Nishil Patel">
       </div>
     </portfolio-sidebar-screen>
 
-    <portfolio-sidebar-screen title="About Me" pagenumber="1" bgColor="#e3f2fd">
-      <div style="color: black;">
+    <portfolio-sidebar-screen title="About" pagenumber="1">
+      <div>
         <h2>About Me</h2>
         <p>
           I'm a sophomore at Penn State University majoring in Cybersecurity Analytics and Operations.
           I'm passionate about cybersecurity, web development, CrossFit coaching, and pickleball.
-          
         </p>
       </div>
     </portfolio-sidebar-screen>
 
-    <portfolio-sidebar-screen title="Projects" pagenumber="2" bgColor="#ffffff">
-      <div style="color: black;">
+    <portfolio-sidebar-screen title="Projects" pagenumber="2">
+      <div>
         <h2>My Projects</h2>
         <ul>
           <li>
-            <strong>Link Preview Card:</strong> A customizable web component that displays a rich preview of a URL, including title, description, and image
+            <strong>Link Preview Card:</strong> A customizable web component that displays a rich preview of a URL, including title, description, and image.
             <br>
             <img class="project-img" src="Screenshot 2025-05-04 at 6.34.13 PM.png" alt="Screenshot of Link Preview Card">
           </li>
           <li>
-            <strong>ddd Steps List:</strong> A structured vertical steps list web component that visually outlines a process using numbered items and supports dynamic theming with DDD design tokens
+            <strong>ddd Steps List:</strong> A structured vertical steps list web component that visually outlines a process using numbered items and supports dynamic theming with DDD design tokens.
             <br>
             <img class="project-img" src="Screenshot 2025-05-04 at 6.54.35 PM.png" alt="Screenshot of Interactive Quiz App">
           </li>
@@ -77,8 +80,8 @@
       </div>
     </portfolio-sidebar-screen>
 
-    <portfolio-sidebar-screen title="Skills" pagenumber="3" bgColor="#e3f2fd">
-      <div style="color: black;">
+    <portfolio-sidebar-screen title="Skills" pagenumber="3">
+      <div>
         <h2>Skills & Certifications</h2>
         <ul>
           <li>Cybersecurity Analysis & Risk Management</li>
@@ -90,16 +93,24 @@
       </div>
     </portfolio-sidebar-screen>
 
-    <portfolio-sidebar-screen title="Contact" pagenumber="4" bgColor="#ffffff">
-      <div style="color: black;">
+    <portfolio-sidebar-screen title="Contact" pagenumber="4">
+      <div>
         <h2>Contact</h2>
         <p>Email: <a href="mailto:nkp5403@psu.edu">nkp5403@psu.edu</a></p>
         <p>
           LinkedIn: <a href="https://www.linkedin.com/in/nishil-patel-68171021b/" target="_blank">linkedin.com/in/nishil-patel</a><br>
           GitHub: <a href="https://github.com/N1shil" target="_blank">github.com/N1shil</a>
         </p>
+        <simple-cta
+          title="Connect with me on LinkedIn"
+          link="https://www.linkedin.com/in/nishil-patel-68171021b/"
+          accent-color="blue"
+        ></simple-cta>
       </div>
     </portfolio-sidebar-screen>
   </portfolio-sidebar-theme>
+
+  <scroll-button></scroll-button>
+
 </body>
 </html>
